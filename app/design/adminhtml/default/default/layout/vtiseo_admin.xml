@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addCss" ifconfig="vtiseocore/defaultseo/duplicate">
+                <name>vtiseo/vtiseo-admin.css</name>
+            </action>
+        </reference>
+    </default>
+    <adminhtml_catalog_product_edit>
+        <reference name="head">
+            <action method="addJs">
+                <name>vtiseo/vtiseo_admin.js</name>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+    <adminhtml_vtiseo_check>
+        <reference name="head">
+            <action method="setTitle"><title>VTISEO Checklist</title></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="vtiseocore.check" template="vtiseo/check.phtml"/>
+        </reference>
+    </adminhtml_vtiseo_check>
+</layout>

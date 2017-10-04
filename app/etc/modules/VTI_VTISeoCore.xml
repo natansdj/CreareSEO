@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <VTI_VTISeoCore>
+            <active>true</active>
+            <codePool>local</codePool>
+        </VTI_VTISeoCore>
+    </modules>
+</config>

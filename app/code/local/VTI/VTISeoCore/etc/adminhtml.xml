@@ -1,0 +1,47 @@
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <vtiseo>
+                                <title>VTISEO</title>
+                                <children>
+                                    <defaultseo>
+                                        <title>VTISEO - Default SEO Check</title>
+                                    </defaultseo>
+                                    <coresettings>
+                                        <title>General Settings</title>
+                                    </coresettings>
+                                    <htaccess>
+                                        <title>.htaccess Editor</title>
+                                    </htaccess>
+                                    <robots>
+                                        <title>robots.txt Editor</title>
+                                    </robots>
+                                </children>
+                            </vtiseo>
+                            <config>
+                                <children>
+                                    <vtiseocore>
+                                        <title>VTISEO Core</title>
+                                    </vtiseocore>
+                                    <vtirobots>
+                                        <title>robots.txt</title>
+                                    </vtirobots>
+                                    <vtihtaccess>
+                                        <title>.htaccess</title>
+                                    </vtihtaccess>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

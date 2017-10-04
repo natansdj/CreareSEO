@@ -1,11 +1,14 @@
-app/code/community/Creare/CreareSeoCore app/code/community/Creare/CreareSeoCore
-app/code/community/Creare/CreareSeoSitemap app/code/community/Creare/CreareSeoSitemap
-app/etc/modules/Creare_CreareSeoCore.xml app/etc/modules/Creare_CreareSeoCore.xml
-app/etc/modules/Creare_CreareSeoSitemap.xml app/etc/modules/Creare_CreareSeoSitemap.xml
-app/design/adminhtml/default/default/layout/creareseo_admin.xml app/design/adminhtml/default/default/layout/creareseo_admin.xml
-app/design/adminhtml/default/default/template/creareseo app/design/adminhtml/default/default/template/creareseo
-app/design/frontend/base/default/layout/creareseo.xml app/design/frontend/base/default/layout/creareseo.xml
-app/design/frontend/base/default/layout/creareseo_sitemap.xml app/design/frontend/base/default/layout/creareseo_sitemap.xml
-app/design/frontend/base/default/template/creareseo app/design/frontend/base/default/template/creareseo
-js/creareseo js/creareseo
-skin/adminhtml/default/default/creareseo skin/adminhtml/default/default/creareseo
+#SEO Core
+app/code/local/VTI/VTISeoCore     app/code/local/VTI/VTISeoCore
+app/etc/modules/VTI_VTISeoCore.xml    app/etc/modules/VTI_VTISeoCore.xml
+app/design/adminhtml/default/default/layout/vtiseo_admin.xml     app/design/adminhtml/default/default/layout/vtiseo_admin.xml
+app/design/adminhtml/default/default/template/vtiseo     app/design/adminhtml/default/default/template/vtiseo
+app/design/frontend/base/default/layout/vtiseo.xml   app/design/frontend/base/default/layout/vtiseo.xml
+app/design/frontend/base/default/template/vtiseo     app/design/frontend/base/default/template/vtiseo
+js/vtiseo    js/vtiseo
+skin/adminhtml/default/default/vtiseo    skin/adminhtml/default/default/vtiseo
+
+# SITEMAP
+#app/code/local/VTI/VTISeoSitemap      app/code/local/VTI/VTISeoSitemap
+#app/etc/modules/VTI_VTISeoSitemap.xml     app/etc/modules/VTI_VTISeoSitemap.xml
+#app/design/frontend/base/default/layout/vtiseo_sitemap.xml   app/design/frontend/base/default/layout/vtiseo_sitemap.xml

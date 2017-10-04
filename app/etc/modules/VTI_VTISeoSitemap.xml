@@ -1,0 +1,12 @@
+<config>
+    <modules>
+        <VTI_VTISeoSitemap>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Catalog/>
+                <Mage_Cms />
+            </depends>
+        </VTI_VTISeoSitemap>
+    </modules>
+</config>

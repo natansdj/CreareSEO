@@ -1,0 +1,51 @@
+<config>
+    <modules>
+        <VTI_VTISeoSitemap>
+            <version>1.0.0</version>
+        </VTI_VTISeoSitemap>
+    </modules>
+    <frontend>
+        <routers>
+            <vtiseositemap>
+                <use>standard</use>
+                <args>
+                    <module>VTI_VTISeoSitemap</module>
+                    <frontName>sitemap</frontName>
+                </args>
+            </vtiseositemap>
+        </routers>
+        <layout>
+            <updates>
+                <vtiseositemap>
+                    <file>vtiseo_sitemap.xml</file>
+                </vtiseositemap>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <blocks>
+            <vtiseositemap>
+                <class>VTI_VTISeoSitemap_Block</class>
+            </vtiseositemap>
+        </blocks>
+        <helpers>
+            <vtiseositemap>
+                <class>VTI_VTISeoSitemap_Helper</class>
+            </vtiseositemap>
+        </helpers>
+    </global>
+    <default>
+        <vtiseositemap>
+            <sitemap>
+                <showcms>1</showcms>
+                <showcategories>1</showcategories>
+                <showxml>0</showxml>
+                <showaccount>1</showaccount>
+                <showcontact>1</showcontact>
+                <meta_description><![CDATA[Can't find what you're looking for? Take a look at our sitemap to get yourself back on track!.]]></meta_description>
+                <description><![CDATA[<p>Can't find what you're looking for? Take a look at our sitemap to get yourself back on track!</p>]]></description>
+                <page_title>Sitemap</page_title>
+            </sitemap>
+        </vtiseositemap>
+    </default>
+</config>
