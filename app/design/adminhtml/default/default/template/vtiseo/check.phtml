@@ -41,14 +41,7 @@
             <li class="success-msg">
                 <span><?php echo $this->__('Parameter-based category pages have "noindex" set in robots') ?></span></li>
         <?php endif; ?>
-        <?php if (!Mage::getStoreConfig('vtiseocore/defaultseo/category_h1')): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Unique Category Headings are disabled. Enabling this setting will allow you to specify a separate category heading.') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg"><span><?php echo $this->__('Unique Category Headings are enabled.') ?></span></li>
-        <?php endif; ?>
+
         <?php if (!Mage::getStoreConfig('vtiseocore/defaultseo/forcecanonical')): ?>
             <li class="error-msg">
                 <span><?php echo $this->__('Canonical Product Redirecting is disabled. Please enable this setting to ensure any non-canonical URL paths are automatically 301 redirected to the canonical path.') ?>
@@ -69,21 +62,6 @@
             <li class="success-msg">
                 <span><?php echo $this->__('You have enabled canonical link meta tags for CMS pages.') ?></span>
             </li>
-        <?php endif; ?>
-        <?php if (!Mage::getStoreConfig('vtiseocore/social/enabled')): ?>
-            <li class="error-msg"><span><?php echo $this->__('Twitter Cards are currently disabled.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <?php if (!Mage::getStoreConfig('vtiseocore/social/twittercreator') || !Mage::getStoreConfig('vtiseocore/social/twittersite')) : ?>
-                <li class="error-msg">
-                    <span><?php echo $this->__('Twitter Cards are enabled, but blank fields have been detected.') ?> <a
-                                href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-                </li>
-            <?php else: ?>
-                <li class="success-msg">
-                    <span><?php echo $this->__('Twitter Cards are enabled for product pages.') ?></span></li>
-            <?php endif ?>
         <?php endif; ?>
 
         <?php if (Mage::getStoreConfig('vtiseocore/metadata/product_metadesc_enabled')) : ?>
@@ -165,35 +143,6 @@
             </li>
         <?php endif ?>
 
-        <?php if (Mage::getStoreConfig('vtiseocore/defaultseo/noindexparamsgallery')) : ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('NOINDEX has been added to pop-up gallery pages.') ?></span></li>
-        <?php else: ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Pop-up gallery pages are currently indexable, set them to NOINDEX.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php endif ?>
-
-        <?php if (Mage::getStoreConfig('vtiseocore/defaultseo/noindexparamscart')) : ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('NOINDEX has been added to the cart page.') ?></span></li>
-        <?php else: ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('The cart page is currently indexable, set it to NOINDEX.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php endif ?>
-
-        <?php if (Mage::getStoreConfig('vtiseocore/defaultseo/noindexparamsaccount')) : ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('NOINDEX has been added to account pages.') ?></span></li>
-        <?php else: ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Account pages are currently indexable, set them to NOINDEX.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php endif ?>
         <?php if (Mage::getStoreConfig('vtiseocore/defaultseo/noindexparamsparameterpages')) : ?>
             <li class="success-msg">
                 <span><?php echo $this->__('NOINDEX has been added to param pages.') ?></span></li>
@@ -204,66 +153,6 @@
             </li>
         <?php endif ?>
 
-        <?php if ($_helper->exists($_helper->robotstxt())): ?>
-
-            <?php if ($_helper->isWriteable($_helper->robotstxt())): ?>
-                <li class="success-msg">
-                    <span><?php echo $this->__('Your %s file exists and is writable.', $_helper->robotstxt()) ?></span>
-                </li>
-            <?php else : ?>
-                <li class="error-msg">
-                    <span><?php echo $this->__('Your %s file needs to be writable to be editable through the configuration. Set permissions to 664 to use this feature.', $_helper->robotstxt()) ?></span>
-                </li>
-            <?php endif ?>
-        <?php else : ?>
-            <li class="error-msg"><span><?php echo $this->__('Unable to find %s file', $_helper->robotstxt()) ?></span>
-            </li>
-        <?php endif ?>
-        <?php if ($_helper->exists($_helper->htaccess())): ?>
-
-            <?php if ($_helper->isWriteable($_helper->htaccess())): ?>
-                <li class="success-msg">
-                    <span><?php echo $this->__('Your %s file exists and is writable.', $_helper->htaccess()) ?></span>
-                </li>
-            <?php else : ?>
-                <li class="error-msg">
-                    <span><?php echo $this->__('Your %s file needs to be writable to be editable through the configuration. Set permissions to 664 to use this feature.', $_helper->htaccess()) ?></span>
-                </li>
-            <?php endif ?>
-        <?php else : ?>
-            <li class="error-msg"><span><?php echo $this->__('Unable to find %s file', $_helper->htaccess()) ?></span>
-            </li>
-        <?php endif ?>
-
-        <?php if (Mage::getStoreConfig('vtiseocore/product_schema/enabled')) : ?>
-            <li class="success-msg"><span><?php echo $this->__('Product structured data is enabled.') ?></span></li>
-        <?php else: ?>
-            <li class="error-msg"><span><?php echo $this->__('You have not enabled product structured data.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span>
-            </li>
-        <?php endif ?>
-        <?php if (Mage::getStoreConfig('vtiseocore/social_schema/enabled')) : ?>
-            <li class="success-msg"><span><?php echo $this->__('Social structured data is enabled.') ?></span></li>
-        <?php else: ?>
-            <li class="error-msg"><span><?php echo $this->__('You have not enabled social structured data.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span>
-            </li>
-        <?php endif ?>
-        <?php if (Mage::getStoreConfig('vtiseocore/address_schema/enabled')) : ?>
-            <li class="success-msg"><span><?php echo $this->__('Organization structured data is enabled.') ?></span>
-            </li>
-        <?php else: ?>
-            <li class="error-msg"><span><?php echo $this->__('You have not enabled Organization structured data.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span>
-            </li>
-        <?php endif ?>
-        <?php if (Mage::getStoreConfig('vtiseocore/logo_schema/enabled')) : ?>
-            <li class="success-msg"><span><?php echo $this->__('Logo structured data is enabled.') ?></span></li>
-        <?php else: ?>
-            <li class="error-msg"><span><?php echo $this->__('You have not enabled logo structured data.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span>
-            </li>
-        <?php endif ?>
     </ul>
 </div>
 
@@ -322,17 +211,6 @@
                     (<?php echo Mage::getStoreConfig('catalog/seo/product_url_suffix') ?>)</span></li>
         <?php endif; ?>
 
-        <?php if (Mage::getStoreConfig('catalog/seo/category_url_suffix')): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Category pages should not have the %s filetype extension, your should empty this field.', Mage::getStoreConfig('catalog/seo/category_url_suffix')) ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/catalog') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('Category pages are correctly NOT using a file type extension such as .php or .html') ?></em></span>
-            </li>
-        <?php endif; ?>
-
     </ul>
 </div>
 
@@ -385,23 +263,7 @@
             <li class="success-msg"><span><?php echo $this->__('Your store view name has been customized.') ?></span>
             </li>
         <?php endif; ?>
-        <?php if (!Mage::helper('vtiseocore')->checkDefaultStoreGroupNames()): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Your Store Group Name has not been changed from the default "Main Store".') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_store') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('Your store group view name has been customized.') ?></span></li>
-        <?php endif; ?>
-        <?php if (!Mage::helper('vtiseocore')->checkDefaultWebsiteNames()): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Your Website Name has not been changed from the default "Main Website".') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_store') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg"><span><?php echo $this->__('Your website name has been customized.') ?></span></li>
-        <?php endif; ?>
+
         <?php if (Mage::getStoreConfig('design/header/logo_alt') == "Magento Commerce"): ?>
             <li class="error-msg">
                 <span><?php echo $this->__('Your logo alt text has not been changed from the default "Magento Commerce".') ?>

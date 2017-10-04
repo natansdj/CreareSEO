@@ -1,4 +1,28 @@
 <config>
+    <menu>
+        <system translate="title" module="adminhtml">
+            <title>System</title>
+            <sort_order>200</sort_order>
+            <children>
+                <vtiseo>
+                    <title>SEO</title>
+                    <sort_order>25</sort_order>
+                    <children>
+                        <defaultseo>
+                            <title>SEO Checklist</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/vtiseo/check</action>
+                        </defaultseo>
+                        <coresettings>
+                            <title>General Settings</title>
+                            <sort_order>30</sort_order>
+                            <action>adminhtml/system_config/edit/section/vtiseocore/</action>
+                        </coresettings>
+                    </children>
+                </vtiseo>
+            </children>
+        </system>
+    </menu>
     <acl>
         <resources>
             <all>
@@ -9,33 +33,21 @@
                     <system>
                         <children>
                             <vtiseo>
-                                <title>VTISEO</title>
+                                <title>SEO Settings</title>
                                 <children>
                                     <defaultseo>
-                                        <title>VTISEO - Default SEO Check</title>
+                                        <title>SEO Settings - Default SEO Check</title>
                                     </defaultseo>
                                     <coresettings>
                                         <title>General Settings</title>
                                     </coresettings>
-                                    <htaccess>
-                                        <title>.htaccess Editor</title>
-                                    </htaccess>
-                                    <robots>
-                                        <title>robots.txt Editor</title>
-                                    </robots>
                                 </children>
                             </vtiseo>
                             <config>
                                 <children>
                                     <vtiseocore>
-                                        <title>VTISEO Core</title>
+                                        <title>SEO Settings Core</title>
                                     </vtiseocore>
-                                    <vtirobots>
-                                        <title>robots.txt</title>
-                                    </vtirobots>
-                                    <vtihtaccess>
-                                        <title>.htaccess</title>
-                                    </vtihtaccess>
                                 </children>
                             </config>
                         </children>

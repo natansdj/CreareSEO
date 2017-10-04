@@ -40,24 +40,6 @@ class VTI_VTISeoCore_Model_Observer extends Mage_Core_Model_Abstract
                 }
                 break;
 
-            case "catalog_product_gallery" :
-                if ($this->helper->getConfig("noindexparamsgallery")) {
-                    $this->setRobots($layout);
-                }
-                break;
-
-            case "checkout_cart_index" :
-                if ($this->helper->getConfig("noindexparamscart")) {
-                    $this->setRobots($layout);
-                }
-                break;
-
-            case "customer_account_login" :
-            case "customer_account_create" :
-                if ($this->helper->getConfig("noindexparamsaccount")) {
-                    $this->setRobots($layout);
-                }
-                break;
         }
 
         if ($this->helper->getConfig("noindexparamsparameterpages")
@@ -66,52 +48,6 @@ class VTI_VTISeoCore_Model_Observer extends Mage_Core_Model_Abstract
         }
 
         return $this;
-    }
-
-    private function redirect301($url, $name)
-    {
-        Mage::getSingleton('core/session')
-            ->addNotice($this->helper->__('%s has been discontinued', $name));
-        Mage::app()->getFrontController()->getResponse()->setRedirect($url, 301);
-        Mage::app()->getResponse()->sendResponse();
-        exit;
-    }
-
-    public function discontinuedCheck($observer)
-    {
-        $request = $observer->getEvent()->getAction()->getRequest();
-
-        if ($request->getControllerModule() !== "Mage_Catalog") {
-            return false;
-        }
-
-        if ($request->getControllerName() === "product") {
-
-            $product = Mage::getResourceModel('catalog/product_collection')
-                ->addAttributeToSelect('vtiseo_discontinued')
-                ->addAttributeToSelect('vtiseo_discontinued_product')
-                ->addAttributeToSelect('name')
-                ->addIdFilter($request->getParam('id'))
-                ->setPageSize(1)
-                ->getFirstItem();
-
-            if ($discontinuedUrl = $this->helper->getDiscontinuedProductUrl($product)) {
-                $this->redirect301($discontinuedUrl, $product->getName());
-            }
-        }
-
-        if ($request->getControllerName() === "category") {
-
-            $category = Mage::getResourceModel('catalog/category_collection')
-                ->addIdFilter($request->getParam('id'))
-                ->addAttributeToSelect('name')
-                ->setPageSize(1)
-                ->getFirstItem();
-
-            if ($discontinuedUrl = $this->helper->getDiscontinuedCategoryUrl($category)) {
-                $this->redirect301($discontinuedUrl, $category->getName());
-            }
-        }
     }
 
     /* The function to remove the meta keywords tag */
@@ -130,61 +66,6 @@ class VTI_VTISeoCore_Model_Observer extends Mage_Core_Model_Abstract
             $observer->getResponse()->setBody($body);
         }
     }
-
-    /* Replaces category name with heading on category pages */
-
-    public function seoHeading($observer) {
-        
-        $category = $observer->getEvent()->getCategory();
-        $category->setOriginalName($category->getName());
-
-        if ($this->helper->getConfig("category_h1")
-            && $category->getData('vtiseo_heading'))
-        {
-            $category->setName($category->getVTIseoHeading());
-        }
-    }
-
-    /*
-     * On admin_system_config_changed_section_{vtirobots/vtihtaccess}
-     * Takes the file, post data and the configuration field and 
-     * writes the post data to the file.
-     */
-
-    public function writeToFileOnConfigSave(Varien_Event_Observer $observer)
-    {
-        $post = Mage::app()->getRequest()->getPost();
-        $robots_location = $post['groups']['files']['fields']['robots_location']['value'];
-        $robots_post = $post['groups']['files']['fields']['robots']['value'];
-        $htaccess_post = $post['groups']['files']['fields']['htaccess']['value'];
-
-        if ($robots_post) {
-            $this->helper->writeFile($this->helper->robotstxt(), $robots_post, 'robots', $robots_location);
-        }
-
-        if ($htaccess_post) {
-            $this->helper->writeFile($this->helper->htaccess(), $htaccess_post, 'htaccess');
-        }
-    }
-
-    /*
-     * On controller_action_predispatch
-     * Takes the file and the configuration field and saves the
-     * current file data to the database before the field is loaded
-     */
-
-    public function saveConfigOnConfigLoad(Varien_Event_Observer $observer)
-    {
-        $path = $this->helper->getConfigPath();
-
-        if ($path == 'system_config_vtihtaccess') {
-            $this->helper->saveFileContentToConfig($this->helper->htaccess(), 'htaccess');
-        }
-        if ($path == 'system_config_vtirobots') {
-            $this->helper->saveFileContentToConfig($this->helper->robotstxt(), 'robots');
-        }
-    }
-
 
     /* Checks if the page loaded is the canonical version, if not redirects to that version */
     
@@ -205,50 +86,6 @@ class VTI_VTISeoCore_Model_Observer extends Mage_Core_Model_Abstract
                 }
             }
         }
-    }
-
-    /* Adds the page title and meta description to the contact page's <head> */
-    
-    public function contactsMetaData(Varien_Event_Observer $observer)
-    {
-        $route = $observer->getEvent()->getAction()->getRequest()->getRouteName();
-        $headBlock = $observer->getEvent()->getLayout()->getBlock('head');
-
-        if ($route !== "contacts" || !is_object($headBlock)) {
-            return false;
-        }
-
-        if ($title = $this->metaHelper()->config('contacts_title')) {
-            $headBlock->setTitle($title);
-        }
-
-        if ($metaDesc = $this->metaHelper()->config('contacts_metadesc')) {
-            $headBlock->setDescription($metaDesc);
-        }
-
-    }
-
-    /* If set, replaces the homepage title with the definitive one set in the config */
-
-    public function forceHomepageTitle($observer)
-    {
-        $actionName = $observer->getEvent()->getAction()->getFullActionName();
-
-        if ($actionName !== "cms_index_index"
-        || !$this->helper->getConfig('forcehptitle')) {
-            return false;
-        }
-
-        $layout = $observer->getEvent()->getLayout();
-        $homepage = Mage::getStoreConfig('web/default/cms_home_page');
-        $title = Mage::getModel('cms/page')->load($homepage, 'identifier')->getTitle();
-
-        if ($title) {
-            if ($head = $layout->getBlock('head')) {
-                $head->setData('title', $title);
-            }
-        }
-
     }
 
     /* On relevant pages, will override the page title with the fallback if one isn't set in the editor */
@@ -371,20 +208,6 @@ class VTI_VTISeoCore_Model_Observer extends Mage_Core_Model_Abstract
     {
         if ($this->helper->getConfig('mandatory_alt')) {
             $observer->getBlock()->setTemplate('vtiseo/catalog/product/helper/gallery.phtml');
-        }
-    }
-
-    /* Sets Google Analytics to use UA when the version is less that 1.9.1 and it is set in the config */
-
-    public function setUA($observer)
-    {
-        $magentoVersion = Mage::getVersion();
-
-        if (Mage::getStoreConfig('vtiseocore/googleanalytics/type') && version_compare($magentoVersion, '1.9.1', '<'))
-        {
-            $layout = $observer->getEvent()->getLayout();
-            $layout->getUpdate()->addUpdate('<reference name="after_body_start"><remove name="google_analytics" /><block type="vtiseocore/googleanalytics_ua" name="universal_analytics" template="vtiseo/google/ua.phtml" /></reference>');
-            $layout->generateXml();
         }
     }
 

@@ -1,12 +1,5 @@
 <?xml version="1.0"?>
 <layout>
-    <default>
-        <reference name="head">
-            <action method="addCss" ifconfig="vtiseocore/defaultseo/duplicate">
-                <name>vtiseo/vtiseo-admin.css</name>
-            </action>
-        </reference>
-    </default>
     <adminhtml_catalog_product_edit>
         <reference name="head">
             <action method="addJs">

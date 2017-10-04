@@ -29,14 +29,7 @@ Below is a list of the current features available within the extension.
 |Remove meta keywords tags|1.0|
 |Remove empty meta description tags|1.0|
 |NOINDEX,FOLLOW on category filters and pagination|1.0|
-|Custom category headings|1.0|
 |Disabled product redirects|1.0|
-|Breadcrumbs structured data|1.0|
-|Hide 'duplicate product' button _(deprecated)_|1.0|
-|Twitter cards on product pages|1.0|
-|OpenGraph data on product pages|1.0|
-|.htaccess editor via configuration|1.0|
-|robots.txt editor via configuration (multisite compatible)|1.0|
 |Canonical product redirects|1.0|
 |Custom contact page title and meta description|1.0|
 |Default product page title and meta description templates|1.0|
@@ -44,18 +37,9 @@ Below is a list of the current features available within the extension.
 |Default CMS meta description templates|1.0|
 |Next/Prev meta elements on category pages for pagination|1.1|
 |Force page title for homepage|1.1|
-|NOINDEX robots tag added to media gallery pages|1.1|
 |NOINDEX robots tag added to search results pages|1.1|
-|Universal Analytics support for older Magento versions|1.2|
-|SiteLinks Search added to homepage|1.2|
 |Mandatory product image label validation|1.2|
-|Product structured data|1.3|
-|Social structured data|1.3|
-|Product/Category/CMS support for Google Content Grouping|1.3|
-|Google Tag Manager support|1.3|
 |Canonical meta tags for CMS pages|1.4|
-|Logo structured data|1.4|
-|Organization structured data|1.4|
 
 ### Developers
 

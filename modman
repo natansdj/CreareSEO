@@ -7,8 +7,3 @@ app/design/frontend/base/default/layout/vtiseo.xml   app/design/frontend/base/de
 app/design/frontend/base/default/template/vtiseo     app/design/frontend/base/default/template/vtiseo
 js/vtiseo    js/vtiseo
 skin/adminhtml/default/default/vtiseo    skin/adminhtml/default/default/vtiseo
-
-# SITEMAP
-#app/code/local/VTI/VTISeoSitemap      app/code/local/VTI/VTISeoSitemap
-#app/etc/modules/VTI_VTISeoSitemap.xml     app/etc/modules/VTI_VTISeoSitemap.xml
-#app/design/frontend/base/default/layout/vtiseo_sitemap.xml   app/design/frontend/base/default/layout/vtiseo_sitemap.xml

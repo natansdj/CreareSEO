@@ -1,49 +1,7 @@
 <layout>
-    <default>
-        <reference name="breadcrumbs">
-            <action method="setTemplate" ifconfig="vtiseocore/breadcrumbs_schema/enabled">
-                <template>vtiseo/page/html/breadcrumbs.phtml</template>
-            </action>
-        </reference>
-        <reference name="after_body_start">
-            <block type="core/template" name="vtiseo.gtm" template="vtiseo/google/googletagmanager.phtml" />
-            <block type="vtiseocore/schema_social" name="vtiseo.socialschema">
-                <action method="setTemplate" ifconfig="vtiseocore/social_schema/social_profiles">
-                    <template>vtiseo/social/schema.phtml</template>
-                </action>
-            </block>
-            <block type="core/template" name="vtiseo.logoschema">
-                <action method="setTemplate" ifconfig="vtiseocore/logo_schema/enabled">
-                    <template>vtiseo/logo/schema.phtml</template>
-                </action>
-            </block>
-            <block type="core/template" name="vtiseo.business">
-                <action method="setTemplate" ifconfig="vtiseocore/address_schema/enabled">
-                    <template>vtiseo/business/schema.phtml</template>
-                </action>
-            </block>
-        </reference>
-    </default>
-    <cms_index_index>
-            <reference name="after_body_start">
-                <block type="core/template" name="vtiseo.sitelinkssearch">
-                    <action method="setTemplate" ifconfig="vtiseocore/sitelinksearch/enabled">
-                        <template>vtiseo/google/sitelinkssearch.phtml</template>
-                    </action>
-                </block>
-            </reference>
-    </cms_index_index>
     <catalog_category_view>
         <reference name="head">
             <block type="core/template" name="vtiseo.pagination" template="vtiseo/category/pagination.phtml" />
-        </reference>
-        <reference name="before_body_end">
-            <block type="core/template" name="vtiseo.contentgroup">
-                <action method="setTemplate" ifconfig="vtiseocore/google_content_grouping/category">
-                    <template>vtiseo/google/contentgrouping.phtml</template>
-                </action>
-                <action method="setType"><type>category</type></action>
-            </block>
         </reference>
     </catalog_category_view>
 
@@ -53,44 +11,12 @@
         </reference>
     </catalog_category_layered>
 
-    <catalog_product_view>
-            <reference name="head">
-                <block type="vtiseocore/schema_product" name="vtiseo.social">
-                    <action method="setTemplate" ifconfig="vtiseocore/social/enabled">
-                        <template>vtiseo/social/social.phtml</template>
-                    </action>
-                </block>
-            </reference>
-            <reference name="after_body_start">
-                <block type="vtiseocore/schema_product" name="vtiseo.productschema">
-                    <action method="setTemplate" ifconfig="vtiseocore/product_schema/enabled">
-                        <template>vtiseo/product/schema.phtml</template>
-                    </action>
-                </block>
-            </reference>
-        <reference name="before_body_end">
-            <block type="core/template" name="vtiseo.contentgroup">
-                <action method="setTemplate" ifconfig="vtiseocore/google_content_grouping/product">
-                    <template>vtiseo/google/contentgrouping.phtml</template>
-                </action>
-                <action method="setType"><type>product</type></action>
-            </block>
-        </reference>
-    </catalog_product_view>
     <cms_page>
         <reference name="head">
             <block type="vtiseocore/page_html_head_cmscanonical" name="vtiseo.cmscanonical">
                 <action method="setTemplate" ifconfig="vtiseocore/defaultseo/enablecmscanonical">
                     <template>vtiseo/page/html/head/cmscanonical.phtml</template>
                 </action>
-            </block>
-        </reference>
-        <reference name="before_body_end">
-            <block type="core/template" name="vtiseo.contentgroup">
-                <action method="setTemplate" ifconfig="vtiseocore/google_content_grouping/cms">
-                    <template>vtiseo/google/contentgrouping.phtml</template>
-                </action>
-                <action method="setType"><type>cms</type></action>
             </block>
         </reference>
     </cms_page>
