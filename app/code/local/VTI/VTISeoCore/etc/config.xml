@@ -13,15 +13,6 @@
                 </vtiseocore>
             </updates>
         </layout>
-        <translate>
-            <modules>
-                <VTI_VTISeoCore>
-                    <files>
-                        <default>VTI_VTISeoCore.csv</default>
-                    </files>
-                </VTI_VTISeoCore>
-            </modules>
-        </translate>
     </adminhtml>
     <frontend>
         <layout>

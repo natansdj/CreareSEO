@@ -5,5 +5,3 @@ app/design/adminhtml/default/default/layout/vtiseo_admin.xml     app/design/admi
 app/design/adminhtml/default/default/template/vtiseo     app/design/adminhtml/default/default/template/vtiseo
 app/design/frontend/base/default/layout/vtiseo.xml   app/design/frontend/base/default/layout/vtiseo.xml
 app/design/frontend/base/default/template/vtiseo     app/design/frontend/base/default/template/vtiseo
-js/vtiseo    js/vtiseo
-skin/adminhtml/default/default/vtiseo    skin/adminhtml/default/default/vtiseo

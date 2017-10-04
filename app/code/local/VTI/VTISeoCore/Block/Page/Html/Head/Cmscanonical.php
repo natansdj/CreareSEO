@@ -50,7 +50,7 @@ class VTI_VTISeoCore_Block_Page_Html_Head_Cmscanonical extends Mage_Core_Block_T
     }
 
     /**
-     * @return VTI_VTISeoSitemap_Helper_Data
+     * @return VTI_VTISeoCore_Helper_Data
      */
     public function vtiseoHelper()
     {

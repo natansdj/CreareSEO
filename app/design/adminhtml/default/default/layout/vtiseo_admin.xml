@@ -1,12 +1,5 @@
 <?xml version="1.0"?>
 <layout>
-    <adminhtml_catalog_product_edit>
-        <reference name="head">
-            <action method="addJs">
-                <name>vtiseo/vtiseo_admin.js</name>
-            </action>
-        </reference>
-    </adminhtml_catalog_product_edit>
     <adminhtml_vtiseo_check>
         <reference name="head">
             <action method="setTitle"><title>VTISEO Checklist</title></action>
