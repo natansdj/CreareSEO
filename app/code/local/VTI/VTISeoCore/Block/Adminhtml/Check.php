@@ -2,7 +2,7 @@
 
 class VTI_VTIseo_Block_Adminhtml_Check extends Mage_Adminhtml_Block_Template
 {
-	public function __construct()
+    public function __construct()
     {
         parent::__construct();
         //$this->setTemplate('dashboard/index.phtml');

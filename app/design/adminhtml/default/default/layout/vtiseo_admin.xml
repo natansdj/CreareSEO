@@ -2,7 +2,9 @@
 <layout>
     <adminhtml_vtiseo_check>
         <reference name="head">
-            <action method="setTitle"><title>VTISEO Checklist</title></action>
+            <action method="setTitle">
+                <title>SEO Checklist</title>
+            </action>
         </reference>
         <reference name="content">
             <block type="core/template" name="vtiseocore.check" template="vtiseo/check.phtml"/>

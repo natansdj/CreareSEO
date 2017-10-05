@@ -25,21 +25,8 @@ Below is a list of the current features available within the extension.
 |Feature|Version|
 |---|---|
 |SEO Checklist Page|1.0|
-|HTML Sitemap|1.0|
-|Remove meta keywords tags|1.0|
-|Remove empty meta description tags|1.0|
 |NOINDEX,FOLLOW on category filters and pagination|1.0|
-|Disabled product redirects|1.0|
-|Canonical product redirects|1.0|
-|Custom contact page title and meta description|1.0|
-|Default product page title and meta description templates|1.0|
-|Default category page title and meta description templates|1.0|
-|Default CMS meta description templates|1.0|
-|Next/Prev meta elements on category pages for pagination|1.1|
-|Force page title for homepage|1.1|
 |NOINDEX robots tag added to search results pages|1.1|
-|Mandatory product image label validation|1.2|
-|Canonical meta tags for CMS pages|1.4|
 
 ### Developers
 

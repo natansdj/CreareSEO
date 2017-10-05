@@ -3,14 +3,14 @@
 class VTI_VTISeoCore_Adminhtml_VTIseoController extends Mage_Adminhtml_Controller_Action
 {
 
-	protected function _isAllowed()
-	{
-		return Mage::getSingleton('admin/session')->isAllowed('system/vtiseo/defaultseo');
-	}
+    public function checkAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
 
-	public function checkAction()
-	{
-		$this->loadLayout();
-		$this->renderLayout();
-	}
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('system/vtiseo/defaultseo');
+    }
 }

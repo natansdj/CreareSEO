@@ -1,37 +1,18 @@
 <?php $_helper = Mage::helper('vtiseocore') ?>
 <div class="content-header">
-    <h3><?php echo $this->__('VTISEO Checklist') ?></h3>
+    <h3><?php echo $this->__('SEO Checklist') ?></h3>
 </div>
 <p><?php echo $this->__('This page contains a simple checklist for our recommended configuration of Magento to maximise SEO performance. This extension checks default scope configuration values only, values specific to a website or store view cannot be checked.') ?></p>
 <div class="content-header">
     <br/>
-    <h4><?php echo $this->__('VTISEO Settings') ?></h4>
+    <h4><?php echo $this->__('SEO Settings') ?></h4>
 
-    <p><?php echo $this->__('This section checks the additional settings made available by VTISEO that can be configured for better SEO performance.') ?></p>
+    <p><?php echo $this->__('This section checks the additional settings made available by SEO Extension that can be configured for better SEO performance.') ?></p>
 </div>
 
 <div class="entry-edit">
     <ul class="messages">
-        <?php if (!Mage::getStoreConfig('vtiseocore/defaultseo/metakw')): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('The Meta Keyword Tag removal and Blank Meta Description Tag removal setting is not currently enabled.') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('The Meta Keywords Tag and any blank Meta Description Tags have been automatically removed.') ?></span>
-            </li>
-        <?php endif; ?>
-        <?php if (!Mage::getStoreConfig('vtiseocore/defaultseo/mandatory_alt')): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Mandatory "alt" tags on product gallery images are not currently enabled  in the manual product editor.') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('You have enabled mandatory "alt" tags on product gallery images in the manual product editor.') ?></span>
-            </li>
-        <?php endif; ?>
+
         <?php if (!Mage::getStoreConfig('vtiseocore/defaultseo/noindexparams')): ?>
             <li class="error-msg">
                 <span><?php echo $this->__('The NOINDEX Meta Tag for parameter based category pages is currently disabled.') ?>
@@ -42,16 +23,6 @@
                 <span><?php echo $this->__('Parameter-based category pages have "noindex" set in robots') ?></span></li>
         <?php endif; ?>
 
-        <?php if (!Mage::getStoreConfig('vtiseocore/defaultseo/forcecanonical')): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Canonical Product Redirecting is disabled. Please enable this setting to ensure any non-canonical URL paths are automatically 301 redirected to the canonical path.') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('Canonical Product Redirecting is enabled. Any non-canonical URL paths are automatically 301 redirected to the canonical path.') ?></span>
-            </li>
-        <?php endif; ?>
         <?php if (!Mage::getStoreConfig('vtiseocore/defaultseo/enablecmscanonical')): ?>
             <li class="error-msg">
                 <span><?php echo $this->__('You have not enabled canonical link tags on CMS pages. Please enable
@@ -63,75 +34,6 @@
                 <span><?php echo $this->__('You have enabled canonical link meta tags for CMS pages.') ?></span>
             </li>
         <?php endif; ?>
-
-        <?php if (Mage::getStoreConfig('vtiseocore/metadata/product_metadesc_enabled')) : ?>
-            <?php if (Mage::getStoreConfig('vtiseocore/metadata/product_metadesc')) : ?>
-                <li class="success-msg">
-                    <span><?php echo $this->__('Default Meta Descriptions for products are configured and enabled.') ?></span>
-                </li>
-            <?php else: ?>
-                <li class="error-msg">
-                    <span><?php echo $this->__('Default Meta Descriptions for products is enabled, but the field is blank.') ?></span>
-                </li>
-            <?php endif ?>
-        <?php else : ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Default Meta Descriptions for product pages are currently not enabled.') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php endif ?>
-
-        <?php if (Mage::getStoreConfig('vtiseocore/metadata/category_metadesc_enabled')) : ?>
-            <?php if (Mage::getStoreConfig('vtiseocore/metadata/category_metadesc')) : ?>
-                <li class="success-msg">
-                    <span><?php echo $this->__('Default Meta Descriptions for categories are configured and enabled.') ?></span>
-                </li>
-            <?php else: ?>
-                <li class="error-msg">
-                    <span><?php echo $this->__('Default Meta Descriptions for categories is enabled, but the field is blank.') ?></span>
-                </li>
-            <?php endif ?>
-        <?php else : ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Default Meta Descriptions for category pages are currently not enabled.') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php endif ?>
-
-
-        <?php if (Mage::getStoreConfig('vtiseocore/metadata/product_title_enabled')) : ?>
-            <?php if (Mage::getStoreConfig('vtiseocore/metadata/product_title')) : ?>
-                <li class="success-msg">
-                    <span><?php echo $this->__('Default Page Titles for products are configured and enabled.') ?></span>
-                </li>
-            <?php else: ?>
-                <li class="error-msg">
-                    <span><?php echo $this->__('Default Page Titles for products is enabled, but the field is blank.') ?></span>
-                </li>
-            <?php endif ?>
-        <?php else : ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Default Page Titles for product pages are currently not enabled.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php endif ?>
-
-        <?php if (Mage::getStoreConfig('vtiseocore/metadata/category_title_enabled')) : ?>
-            <?php if (Mage::getStoreConfig('vtiseocore/metadata/category_title')) : ?>
-                <li class="success-msg">
-                    <span><?php echo $this->__('Default Page Titles for categories are configured and enabled.') ?></span>
-                </li>
-            <?php else: ?>
-                <li class="error-msg">
-                    <span><?php echo $this->__('Default Page Titles for categories is enabled, but the field is blank.') ?></span>
-                </li>
-            <?php endif ?>
-        <?php else : ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Default Page Titles for category pages are currently not enabled.') ?> <a
-                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/vtiseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php endif ?>
 
         <?php if (Mage::getStoreConfig('vtiseocore/defaultseo/noindexparamssearch')) : ?>
             <li class="success-msg">
@@ -192,24 +94,16 @@
             <li class="success-msg">
                 <span><?php echo $this->__('Product Canonical Tags have been configured correctly') ?></span></li>
         <?php endif; ?>
-        <?php if (Mage::getStoreConfig('catalog/seo/product_use_categories')): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Categories are currently used in your Product URL path. Please set Search Engine Optimizations > Use Categories Path for Product URLs to No to ensure products can only be accessed via the canonical URL.') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/catalog') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('Product URL\'s only exist under the canonical tag') ?></span></li>
-        <?php endif; ?>
-        <?php if (!Mage::getStoreConfig('catalog/seo/product_url_suffix')): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Product pages should have a suitable file type extension such as .php or .html') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/catalog') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg"><span><?php echo $this->__('Product pages have a suitable page extension set') ?>
-                    (<?php echo Mage::getStoreConfig('catalog/seo/product_url_suffix') ?>)</span></li>
-        <?php endif; ?>
+
+<!--        --><?php //if (Mage::getStoreConfig('catalog/seo/product_use_categories')): ?>
+<!--            <li class="error-msg">-->
+<!--                <span>--><?php //echo $this->__('Categories are currently used in your Product URL path. Please set Search Engine Optimizations > Use Categories Path for Product URLs to No to ensure products can only be accessed via the canonical URL.') ?>
+<!--                    <a href="--><?php //echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/catalog') ?><!--">--><?php //echo $this->__('Go fix it') ?><!--</a></span>-->
+<!--            </li>-->
+<!--        --><?php //else: ?>
+<!--            <li class="success-msg">-->
+<!--                <span>--><?php //echo $this->__('Product URL\'s only exist under the canonical tag') ?><!--</span></li>-->
+<!--        --><?php //endif; ?>
 
     </ul>
 </div>
@@ -224,26 +118,7 @@
 
 <div class="entry-edit">
     <ul class="messages">
-        <?php if (Mage::getStoreConfig('design/head/default_description') != "" && Mage::getStoreConfig('vtiseocore/defaultseo/metakw')): ?>
-            <li class="error-msg">
-                <span><?php echo $this->__('Please empty the default Meta Description value within Design > HTML Head.') ?>
-                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/design') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-            </li>
-        <?php else: ?>
-            <li class="success-msg">
-                <span><?php echo $this->__('The default Meta Description value has been emptied.') ?></span></li>
-        <?php endif; ?>
-        <?php if (!Mage::getStoreConfig('vtiseocore/defaultseo/metakw')) : ?>
-            <?php if (Mage::getStoreConfig('design/head/default_keywords') == "Magento, Varien, E-commerce"): ?>
-                <li class="error-msg">
-                    <span><?php echo $this->__('Please empty the default Meta Keywords value within Design > HTML Head. (message should only appear at all, if Meta Keywords tag has been enabled).') ?>
-                        <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/design') ?>"><?php echo $this->__('Go fix it') ?></a></span>
-                </li>
-            <?php else: ?>
-                <li class="success-msg">
-                    <span><?php echo $this->__('The default Meta Keywords value has been emptied.') ?></span></li>
-            <?php endif; ?>
-        <?php endif ?>
+
         <?php if (Mage::getStoreConfig('design/head/default_robots') != "INDEX,FOLLOW"): ?>
             <li class="error-msg">
                 <span><?php echo $this->__('Search Engine are currently blocked from caching and/or crawling your website. Unless you\’re in the development stage, please "Default Robots" to INDEX, FOLLOW within the HTML Head settings.') ?>

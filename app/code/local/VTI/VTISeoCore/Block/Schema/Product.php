@@ -19,6 +19,11 @@ class VTI_VTISeoCore_Block_Schema_Product extends Mage_Catalog_Block_Product_Vie
         return Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
     }
 
+    public function getReviewsCount()
+    {
+        return count($this->getProductReviews());
+    }
+
     public function getProductReviews()
     {
         if (!Mage::helper('core')->isModuleEnabled('Mage_Review')) {
@@ -30,11 +35,6 @@ class VTI_VTISeoCore_Block_Schema_Product extends Mage_Catalog_Block_Product_Vie
             ->addEntityFilter('product', $this->getProduct()->getId())
             ->addStoreFilter(Mage::app()->getStore()->getId())
             ->setDateOrder();
-    }
-
-    public function getReviewsCount()
-    {
-        return count($this->getProductReviews());
     }
 
     public function getAverageRating($reviewId)

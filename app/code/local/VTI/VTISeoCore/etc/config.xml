@@ -35,26 +35,21 @@
         </routers>
     </admin>
     <global>
-        <eav_attributes>
-            <catalog_product>
-                <name>
-                    <code>name</code>
-                    <locked_fields>
-                        <is_unique/>
-                    </locked_fields>
-                </name>
-            </catalog_product>
-        </eav_attributes>
+        <!--<eav_attributes>-->
+        <!--<catalog_product>-->
+        <!--<name>-->
+        <!--<code>name</code>-->
+        <!--<locked_fields>-->
+        <!--<is_unique/>-->
+        <!--</locked_fields>-->
+        <!--</name>-->
+        <!--</catalog_product>-->
+        <!--</eav_attributes>-->
         <models>
             <vtiseocore>
                 <class>VTI_VTISeoCore_Model</class>
                 <resourceModel>cleanup_mysql4</resourceModel>
             </vtiseocore>
-            <sitemap>
-                <rewrite>
-                    <sitemap>VTI_VTISeoCore_Model_Sitemap_Sitemap</sitemap>
-                </rewrite>
-            </sitemap>
         </models>
         <helpers>
             <vtiseocore>
@@ -88,24 +83,6 @@
                     </noindex>
                 </observers>
             </controller_action_layout_generate_xml_before>
-            <http_response_send_before>
-                <observers>
-                    <vtiseo_keyword>
-                        <type>singleton</type>
-                        <class>vtiseocore/observer</class>
-                        <method>applyTag</method>
-                    </vtiseo_keyword>
-                </observers>
-            </http_response_send_before>
-            <catalog_controller_product_view>
-                <observers>
-                    <vtiseo_forcecanonical>
-                        <type>singleton</type>
-                        <class>vtiseocore/observer</class>
-                        <method>forceProductCanonical</method>
-                    </vtiseo_forcecanonical>
-                </observers>
-            </catalog_controller_product_view>
             <controller_action_layout_generate_blocks_after>
                 <observers>
                     <settitle>
@@ -122,45 +99,17 @@
             </controller_action_layout_generate_blocks_after>
         </events>
     </frontend>
-    <adminhtml>
-        <events>
-            <catalog_product_gallery_prepare_layout>
-                <observers>
-                    <vtiseo_mandatory_alt>
-                        <type>singleton</type>
-                        <class>vtiseocore/observer</class>
-                        <method>setMandatoryAltTag</method>
-                    </vtiseo_mandatory_alt>
-                </observers>
-            </catalog_product_gallery_prepare_layout>
-        </events>
-    </adminhtml>
     <default>
         <vtiseocore>
             <defaultseo>
-                <metakw>0</metakw>
-                <mandatory_alt>0</mandatory_alt>
                 <noindexparams>0</noindexparams>
                 <noindexparamssearch>0</noindexparamssearch>
                 <noindexparamsparameterpages>0</noindexparamsparameterpages>
                 <category_h1>0</category_h1>
-                <forcecanonical>0</forcecanonical>
                 <enablecmscanonical>0</enablecmscanonical>
                 <cms_canonical_protocol>https://</cms_canonical_protocol>
                 <cms_canonical_slashes>0</cms_canonical_slashes>
             </defaultseo>
-            <metadata>
-                <product_title_enabled>0</product_title_enabled>
-                <product_title>[name] - [store]</product_title>
-                <product_metadesc_enabled>0</product_metadesc_enabled>
-                <product_metadesc>[name], [store]</product_metadesc>
-                <category_title_enabled>0</category_title_enabled>
-                <category_title>[original_name] - [store]</category_title>
-                <category_metadesc_enabled>0</category_metadesc_enabled>
-                <category_metadesc>[original_name] [store]</category_metadesc>
-                <cms_metadesc_enabled>0</cms_metadesc_enabled>
-                <cms_metadesc>[title] - [store]</cms_metadesc>
-            </metadata>
         </vtiseocore>
     </default>
 </config>

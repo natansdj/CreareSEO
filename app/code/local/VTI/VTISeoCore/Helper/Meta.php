@@ -1,38 +1,69 @@
 <?php
+
 class VTI_VTISeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
 {
     public function getDefaultTitle($pagetype)
     {
-        $title = $this->config($pagetype.'_title');
+        $title = $this->config($pagetype . '_title');
         return $this->shortcode($title);
     }
 
-    public function getDefaultMetaDescription($pagetype)
+    public function config($path)
     {
-        $metadesc = $this->config($pagetype.'_metadesc');
-        return $this->shortcode($metadesc);
+        return Mage::getStoreConfig('vtiseocore/metadata/' . $path);
+    }
+
+    public function shortcode($string)
+    {
+        $pagetype = $this->getPageType();
+
+        preg_match_all("/\[(.*?)\]/", $string, $matches);
+
+        for ($i = 0; $i < count($matches[1]); $i++) {
+            $tag = $matches[1][$i];
+
+            if ($tag === "store") {
+                $string = str_replace($matches[0][$i], Mage::app()->getStore()->getName(), $string);
+            } else {
+
+                switch ($pagetype->_code) {
+                    case 'product' :
+                        $attribute = $this->productAttribute($pagetype->_model, $tag);
+                        break;
+
+                    case 'category' :
+                        $attribute = $this->attribute($pagetype->_model, $tag);
+                        break;
+
+                    case 'cms' :
+                        $attribute = $this->attribute($pagetype->_model, $tag);
+                        break;
+
+                }
+                $string = str_replace($matches[0][$i], $attribute, $string);
+            }
+        }
+
+        return $string;
     }
 
     public function getPageType()
     {
         $registry = new Varien_Object;
 
-        if (Mage::registry('current_product'))
-        {
+        if (Mage::registry('current_product')) {
             $registry->_code = 'product';
             $registry->_model = Mage::registry('current_product');
 
             return $registry;
 
-        } elseif (Mage::registry('current_category'))
-        {
+        } elseif (Mage::registry('current_category')) {
             $registry->_code = 'category';
             $registry->_model = Mage::registry('current_category');
 
             return $registry;
 
-        } elseif (Mage::app()->getFrontController()->getRequest()->getRouteName() === 'cms')
-        {
+        } elseif (Mage::app()->getFrontController()->getRequest()->getRouteName() === 'cms') {
             $registry->_code = 'cms';
             $registry->_model = Mage::getSingleton('cms/page');
 
@@ -43,48 +74,6 @@ class VTI_VTISeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
 
         }
     }
-
-    public function config($path)
-    {
-        return Mage::getStoreConfig('vtiseocore/metadata/'.$path);
-    }
-
-    public function shortcode($string)
-    {
-        $pagetype = $this->getPageType();
-
-        preg_match_all("/\[(.*?)\]/", $string, $matches);
-
-            for($i = 0; $i < count($matches[1]); $i++)
-            {
-                $tag = $matches[1][$i];
-
-                if ($tag === "store")
-                {
-                    $string = str_replace($matches[0][$i], Mage::app()->getStore()->getName(), $string);
-                } else {
-
-                switch ($pagetype->_code)
-                {
-                    case 'product' :
-                        $attribute = $this->productAttribute($pagetype->_model, $tag);
-                    break;
-
-                    case 'category' :
-                        $attribute = $this->attribute($pagetype->_model, $tag);
-                    break;
-
-                    case 'cms' :
-                        $attribute = $this->attribute($pagetype->_model, $tag);
-                    break;
-
-                }
-                $string = str_replace($matches[0][$i], $attribute, $string);
-                }
-            }
-
-            return $string;
-     }
 
     public function productAttribute($product, $attribute)
     {
@@ -128,11 +117,16 @@ class VTI_VTISeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
         return $data;
     }
 
-     public function attribute($model, $attribute)
-     {
-         if ($model->getData($attribute))
-         {
+    public function attribute($model, $attribute)
+    {
+        if ($model->getData($attribute)) {
             return $model->getData($attribute);
-         }
-     }
+        }
+    }
+
+    public function getDefaultMetaDescription($pagetype)
+    {
+        $metadesc = $this->config($pagetype . '_metadesc');
+        return $this->shortcode($metadesc);
+    }
 }
